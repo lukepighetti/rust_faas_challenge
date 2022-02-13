@@ -1,6 +1,14 @@
-version: '3'
+version: "3"
 
 tasks:
   run:
     cmds:
       - cargo run
+
+  build:
+    cmds:
+      - gcloud builds submit --tag gcr.io/rust-faas-challenge/hello
+
+  deploy:
+    cmds:
+      - gcloud run deploy --image gcr.io/rust-faas-challenge/hello --platform managed
